@@ -54,6 +54,6 @@ app.listen(port, () => {
   console.log(result);
   console.log('while num is : '+lib.num);
   console.log('mirror hello world : '+lib.reverseString('hello world'));
-  //liblog.log_info(`Example app listening on port ${port} ${libdate.getdisptimestamp()}`);
+  liblog.log_info(`Example app listening on port ${port} ${libdate.getdisptimestamp()}`);
   liblog.log_error('error log pinged at '+libdate.getdisptimestamp());
 })
