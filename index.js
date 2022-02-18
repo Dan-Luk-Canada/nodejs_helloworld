@@ -9,6 +9,9 @@ const lib = require("./lib");
 const libdate = require("./date");
 const liblog = require("./logtest-winston");
 
+const mysqlrouter = require("./mysql/index");
+app.use('/api/mysqlrouter', mysqlrouter);
+
 app.get('/', (req, res) => {
   res.status(200).send({ 
     message: 'Hello World',
@@ -49,12 +52,12 @@ app.post('/:id/post',(req,res)=>{
 });
 
 app.listen(port, () => {
-  console.log(`Example app on git. listening on port ${port} ${libdate.getdisptimestamp()}`);
+  console.log(`Example app on git. listening on port ${port} ${libdate.getdisptimestamp()} - ${process.env.PORT}`);
   //const lib = require("./lib");
-  const result = lib.add(4, 4);
-  console.log(result);
-  console.log('while num is : '+lib.num);
-  console.log('mirror hello world : '+lib.reverseString('hello world'));
+  //const result = lib.add(4, 4);
+  //console.log(result);
+  //console.log('while num is : '+lib.num);
+  //console.log('mirror hello world : '+lib.reverseString('hello world'));
   liblog.log_info(`Example app listening on port ${port} ${libdate.getdisptimestamp()}`);
-  liblog.log_error('error log pinged at '+libdate.getdisptimestamp());
+  //liblog.log_error('error log pinged at '+libdate.getdisptimestamp());
 })
