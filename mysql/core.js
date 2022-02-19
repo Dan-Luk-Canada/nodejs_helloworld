@@ -1,16 +1,16 @@
 const mysql = require('mysql');
+const config = require("../config");
+let mysqldbaccess = {};
 
 //db_pool = mysql.createConnection(db); // pls refer to createConnection vs createPool
 const pool = mysql.createPool({
-    connectionLimit : 10,
-    host: 'localhost',
-    port: '3306',
-    password : 'abcd1234',
-    user: 'root',
-    //database: 'cookiejar' //this doesn't work with create DB
+    connectionLimit : config.mysql.connectionlimit,
+    host: config.mysql.host,
+    port: config.mysql.port,
+    password : config.mysql.password,
+    user: config.mysql.username,
+    //database: config.mysql.database //this doesn't work with create DB
 });
-
-let mysqldbaccess = {};
 
 mysqldbaccess.top100 = () => {
     return new Promise((resolve,reject)=>{
