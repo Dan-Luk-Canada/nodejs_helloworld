@@ -2,14 +2,17 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use('/visualpath', express.static('static'));
+
 app.use(express.json()); // use middleware
 
 app.use((req,res,next)=>{
+  console.log(`middleware got request from ${req.socket.remoteAddress}`);
   res.header("Access-Control-Allow-Origin","*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,DELETE");
   next();
 });
+app.use('/visualpath', express.static('static'));
+
 
 const lib = require("./lib");
 const libdate = require("./date");
