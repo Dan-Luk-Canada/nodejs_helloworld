@@ -34,12 +34,18 @@ app.get('/', (req, res) => {
 
 app.get('/:id/:action',(req,res)=>{
   //res.status(200).send('this is select id : '+req.params.id+ ' action : '+req.params.action);
+
+  const queryparams = req.query; //eg /123/update?name=peter&age=33
+
   const dtnow = libdate.getdisptimestamp();
   res.status(200).send({ 
     message:'this is /:id/:action',  
     id : req.params.id, 
     action:req.params.action, 
-    timestamp:dtnow 
+    timestamp:dtnow,
+    query : queryparams,
+    name : queryparams.name,
+    age : queryparams.age,
   });
 })
 
