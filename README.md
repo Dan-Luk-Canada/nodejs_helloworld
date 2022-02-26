@@ -6,6 +6,8 @@ install nodemon :
 install mysql :
 > npm install mysql
 
+load required modules after git clone. lookup required modules from package-lock.json
+> npm install
 
 For error Nodemon Command Not Working Unauthorized Access
 open the Windows PowerShell in Administration Mode
