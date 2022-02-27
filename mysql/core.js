@@ -58,4 +58,4 @@ mysqldbaccess.dbinitial = () => {
     });
 };
 
-module.exports = mysqldbaccess;
+module.exports = {mysqldbaccess};

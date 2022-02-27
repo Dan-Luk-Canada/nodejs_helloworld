@@ -6,9 +6,9 @@ const router = express.Router();
 router.get('/',(req,res)=>{
     res.status(200).send(
         {
-            message: 'Hello World from mysql index.js'
+            message: `Hello World from mysql index.js`
         }
-    )
+    );
 });
 
 router.get('/select/top100',async (req,res) => {
@@ -16,7 +16,7 @@ router.get('/select/top100',async (req,res) => {
         const results = await db.top100();
         res.status(200).json(results);
     }catch(e){
-        res.status(500).send({message: e});
+        res.status(501).send({message: e});
     }
 });
 

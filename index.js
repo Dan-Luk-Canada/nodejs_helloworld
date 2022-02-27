@@ -20,55 +20,11 @@ const liblog = require("./logtest-winston");
 const config = require("./config");
 
 const mysqlrouter = require("./mysql/index");
+
 app.use('/api/mysqlrouter', mysqlrouter);
 
-app.get('/', (req, res) => {
-  /*
-  res.status(200).send({ 
-    message: process.env,
-    timestamp: libdate.getdisptimestamp()
-  });
-  */
-  res.status(200).json(process.env);
-})
-
-app.get('/:id/:action',(req,res)=>{
-  //res.status(200).send('this is select id : '+req.params.id+ ' action : '+req.params.action);
-
-  const queryparams = req.query; //eg /123/update?name=peter&age=33
-
-  const dtnow = libdate.getdisptimestamp();
-  res.status(200).send({ 
-    message:'this is /:id/:action',  
-    id : req.params.id, 
-    action:req.params.action, 
-    timestamp:dtnow,
-    query : queryparams,
-    name : queryparams.name,
-    age : queryparams.age,
-  });
-})
-
-app.post('/:id/post',(req,res)=>{
-  const dtnow = libdate.getdisptimestamp();
-  const {id} = req.params;
-  const {logo} = req.body;
-  const {color} = req.body;
-
-  if(!logo){
-    res.status(418).send({ message:'we need a logo', timestamp :dtnow});
-
-  }
-
-  res.status(200).send({
-    message: `I got logo ${logo} with assigned id ${id}`,
-    color : `selected color is ${color}`,
-    timestamp: dtnow
-
-  });
-
-
-});
+const miscrouter = require('./routers/misc');
+app.use('/',miscrouter);
 
 app.listen(port, () => {
   console.log(`Example app on git. listening on port :${port} ${libdate.getdisptimestamp()}`);
