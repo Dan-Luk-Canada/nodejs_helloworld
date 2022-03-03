@@ -22,3 +22,6 @@ docker cmd used :
 login go mysql cli :
 > ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'abcd1234';
 > FLUSH PRIVILEGES;
+
+Node JS Environment Variables
+> https://medium.com/geekculture/node-js-environment-variables-setting-node-app-for-multiple-environments-51351b51c7cd
