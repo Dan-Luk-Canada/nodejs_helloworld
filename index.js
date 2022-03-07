@@ -12,6 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/visualpath', express.static('static'));
+app.use('/http_temp_server', express.static('http_temp_server'));
 
 
 const lib = require("./lib");
@@ -19,6 +20,8 @@ const libdate = require("./date");
 const liblog = require("./logtest-winston");
 const config = require("./config");
 const slackmsg = require('./slack');
+const { job } = require('./routers/cronjob');
+job.start();
 
 const mysqlrouter = require("./mysql/index");
 
