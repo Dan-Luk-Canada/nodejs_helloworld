@@ -1,4 +1,5 @@
 const express = require('express');
+var helmet = require('helmet');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -14,7 +15,7 @@ app.use((req, res, next) => {
 });
 app.use('/visualpath', express.static('static'));
 app.use('/http_temp_server', express.static('http_temp_server'));
-
+app.use(helmet());
 
 const lib = require("./lib");
 const libdate = require("./date");
