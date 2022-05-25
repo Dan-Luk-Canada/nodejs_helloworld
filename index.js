@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const log = (arg) => console.log(arg)
 
 app.use(express.json()); // use middleware
 
@@ -30,12 +31,13 @@ app.use('/api/mysqlrouter', mysqlrouter);
 const miscrouter = require('./routers/misc');
 app.use('/', miscrouter);
 
-app.listen(port, () => {
+//https://medium.com/@furkandursun947/creating-a-web-server-with-node-js-using-http-module-and-logging-the-requests-76e9b60323ba
+app.listen(port, (req,res) => {
   slackmsg.slackinfo.hostname = config.slack.hostname;
   slackmsg.slackinfo.path = config.slack.path;
   slackmsg.slacklog(`nodejs_helloworld listening on port :${port} ${libdate.getdisptimestamp()}`);
 
-  console.log(`Example app on git. listening on port :${port} ${libdate.getdisptimestamp()}`);
+  log(`Example app on git. listening on port :${port} ${libdate.getdisptimestamp()}`);
   //const lib = require("./lib");
   //const result = lib.add(4, 4);
   //console.log(result);

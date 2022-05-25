@@ -1,4 +1,4 @@
-const {CronJob } = require('cron');
+const {CronJob} = require('cron');
 
 console.log('log before job installation');
 
